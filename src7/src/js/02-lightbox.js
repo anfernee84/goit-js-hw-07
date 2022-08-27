@@ -24,4 +24,7 @@ new SimpleLightbox(".gallery a", {
   captionDelay: 250,
   animationSpeed: 250,
   overlay: true,
+  close: false,
+  showCounter: false,
+  fadeSpeed: 200,
 });
