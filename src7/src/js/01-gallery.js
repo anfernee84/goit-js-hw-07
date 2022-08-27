@@ -7,7 +7,12 @@ const rootGallery = document.querySelector(".gallery");
 const imageGallery = createGallery(galleryItems);
 rootGallery.insertAdjacentHTML("afterbegin", imageGallery);
 rootGallery.addEventListener("click", handleClickOnImage);
-const instanceShow = basicLightbox;
+const modalInstance = basicLightbox.create(
+  `<div class="modal">
+      <img src="", width = "640", height = "480">
+  </div>`
+);
+const imageInsideModal = modalInstance.element().querySelector(".modal>img");
 
 function createGallery(arrOfObj) {
   return arrOfObj
@@ -34,12 +39,8 @@ function handleClickOnImage(evt) {
   }
   //
 
-  instanceShow
-    .create(
-      `<img src="${evt.target.dataset.source}", width = "640", height = "480"></div>`
-    )
-    .show();
-  console.log(instanceShow);
+  imageInsideModal.src = evt.target.dataset.source;
+  modalInstance.show();
   //   instance.show();
   //   instanceShow();
   ////////////////////////////////////////////////////// close on Escape v1////////////////////////////
@@ -55,7 +56,7 @@ function handleClickOnImage(evt) {
     const ESC_KEY_CODE = "Escape";
     if (evt.code === ESC_KEY_CODE) {
       //   instance.close();
-      instanceShow.close();
+      modalInstance.close();
       window.removeEventListener("keydown", onEscape);
     }
   }

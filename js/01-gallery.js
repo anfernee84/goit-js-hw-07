@@ -4,11 +4,11 @@ import { galleryItems } from "./gallery-items.js";
 // console.log(galleryItems);
 ///////////////////////////////////////////////////////// gallery creation ///////////////////////////
 const rootGallery = document.querySelector(".gallery");
-const imageGallery = CreateGallery(galleryItems);
+const imageGallery = createGallery(galleryItems);
 rootGallery.insertAdjacentHTML("afterbegin", imageGallery);
 rootGallery.addEventListener("click", handleClickOnImage);
 
-function CreateGallery(arrOfObj) {
+function createGallery(arrOfObj) {
   return arrOfObj
     .map((elem) => {
       const { preview, original, description } = elem;
